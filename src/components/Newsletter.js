@@ -14,6 +14,12 @@ export default function Newsletter() {
       <div>
         <div>
           <label>Enter your email address</label>
+          <input
+            type="email"
+            name="email"
+            value=""
+            placeholder="Enter your email address"
+          />
         </div>
       </div>
       <div>

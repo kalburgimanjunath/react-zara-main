@@ -29,7 +29,10 @@ export default function Widget({ title }) {
                       />
                     </div>
                     <div className="title">{item.title}</div>
+                    <div className="title">Rs.3000</div>
+                    <div>MRP including all taxes</div>
                   </a>
+                  <button>ADD TO BAG</button>
                 </div>
               );
             }

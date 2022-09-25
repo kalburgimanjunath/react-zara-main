@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Widget from '../components/Widget';
+import Newsletter from '../components/Newsletter';
 export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState();
@@ -43,7 +45,7 @@ export default function Product() {
     'Long collared blazer with a V-neckline and long sleeves. Front flap pockets. Button-up front.';
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <div
         className="product-detail"
         style={{ display: 'flex', justifyContent: 'space-evenly' }}
@@ -89,6 +91,8 @@ export default function Product() {
       </div>
       <Widget title="MATCH WITH" />
       <Widget title="SIMILAR ITEMS" />
+      <Newsletter />
+      <Footer />
     </div>
   );
 }

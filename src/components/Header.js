@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useEarthoOne } from '@eartho/one-client-react';
 
-export default function Header() {
+export default function Header({ user }) {
   const [showHamberger, setHamberger] = useState(false);
+  const { isLoading, isConnected, error, connectWithPopup, logout } =
+    useEarthoOne();
   const container = {
     header: {
       display: 'flex',
@@ -108,9 +111,23 @@ export default function Header() {
 
       <div style={container.right_menu}>
         <div style={container.search}>Search</div>
-        <div>Login</div>
+
+        {user ? (
+          <>
+            <div className="header-text">Hello, {user.displayName}</div>
+            {/* <img src={user.photoURL} width={50} height={50} /> */}
+            <div onClick={() => logout({ returnTo: window.location.origin })}>
+              Log out
+            </div>
+          </>
+        ) : (
+          <div>Login</div>
+        )}
+
         <div>Help</div>
-        <div>Cart</div>
+        <div>
+          <a href="./cart">Cart</a>
+        </div>
       </div>
     </div>
   );

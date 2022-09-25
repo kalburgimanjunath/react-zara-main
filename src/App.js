@@ -5,7 +5,10 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import Product from './pages/Product';
+import Cart from './pages/Cart';
 import { useEarthoOne } from '@eartho/one-client-react';
+import Header from './components/Header';
+
 export default function App() {
   const category = ['zara original', 'men', 'women', 'kids'];
   const { isLoading, isConnected, error, user, connectWithPopup, logout } =
@@ -13,11 +16,8 @@ export default function App() {
   if (isConnected) {
     return (
       <div>
-        <div className="header-text">Hello, {user.user.displayName}</div>
-        <img src={user.user.photoURL} width={50} height={50} />
-        <button onClick={() => logout({ returnTo: window.location.origin })}>
-          Log out
-        </button>
+        <Header {...user} />
+
         <Routes>
           <Route
             path="/category/:id"
@@ -27,6 +27,7 @@ export default function App() {
             path="/products/:id"
             element={<Product category={category} />}
           />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/*" element={<Home category={category} />} exact />
         </Routes>
       </div>

@@ -94,13 +94,13 @@ export default function Header({ user }) {
           }
         >
           <div className="sidebartabs" style={container.sidebartabs}>
-            {tabs.map((item) => {
-              return <div>{item}</div>;
+            {tabs.map((item, index) => {
+              return <div key={index}>{item}</div>;
             })}
           </div>
           <div className="sidebaritems" style={container.sidebaritems}>
-            {sidebar.map((item) => (
-              <div>{item}</div>
+            {sidebar.map((item, index) => (
+              <div key={index}>{item}</div>
             ))}
           </div>
         </div>
@@ -110,13 +110,20 @@ export default function Header({ user }) {
       </div>
 
       <div style={container.right_menu}>
-        <div style={container.search}>Search</div>
+        <div style={container.search}>
+          <a href="./search">Search</a>
+        </div>
 
         {user ? (
           <>
             <div className="header-text">Hello, {user.displayName}</div>
             {/* <img src={user.photoURL} width={50} height={50} /> */}
-            <div onClick={() => logout({ returnTo: window.location.origin })}>
+            <div
+              onClick={() => {
+                confirm('User will be logged out');
+                logout({ returnTo: window.location.origin });
+              }}
+            >
               Log out
             </div>
           </>

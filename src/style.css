@@ -88,3 +88,21 @@ body {
   text-transform: lowercase;
   font-weight: normal;
 }
+
+.search input {
+  border: none;
+  border-bottom: 1px solid #d7d7d7;
+  width: 100%;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.search .tabs {
+  display: flex;
+}
+.search .tabs div {
+  padding: 10px;
+  text-transform: uppercase;
+}
